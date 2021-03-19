@@ -38,6 +38,7 @@ this.timeFinish(time);
   timeFinish(time) {
     if (time < 0) {
       clearInterval(this.setInt);
+       refs.timerFace.textContent = "Finish";
     }
   }
 };
