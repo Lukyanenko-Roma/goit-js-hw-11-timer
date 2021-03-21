@@ -11,6 +11,12 @@ class CountdownTimer {
     this.selector = selector;
     this.targetDate = targetDate;
   }
+  updateInterface(days, hours, mins, secs) {
+    refs.days.textContent = `${days}`;
+    refs.hours.textContent = `${hours}`;
+    refs.mins.textContent = `${mins}`;
+    refs.secs.textContent = `${secs}`;
+  }
 
   setInt = setInterval(() => {
     const nowDate = Date.now();
@@ -26,10 +32,7 @@ this.timeFinish(time);
     );
     const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
     const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
-    refs.days.textContent = `${days}`;
-    refs.hours.textContent = `${hours}`;
-    refs.mins.textContent = `${mins}`;
-    refs.secs.textContent = `${secs}`;
+    this.updateInterface(days, hours, mins, secs);
   }
 
   pad(value) {
@@ -46,3 +49,5 @@ const newCountDownTimer = new CountdownTimer({
   selector: '#timer-1',
   targetDate: new Date('March 24, 2021'),
 });
+
+
